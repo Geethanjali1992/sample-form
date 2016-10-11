@@ -1,81 +1,103 @@
 function formValidation()  
 {  
-var uname = document.registration.username;  
-var umobile= document.registration.mobilenumber;   
+var uname = document.registration.username.focus();  
+var umobile= document.registration.mobilenumber; 
+var udob=document.registration.dob;  
+var uage=document.registration.age; 
 var uadd = document.registration.address;  
 var ucity = document.registration.city;
 var uemail = document.registration.email;    
 var male = document.registration.male;  
 var female = document.registration.female;
-
-if(allLetter(uname))  
-{ 
-if(numeric(umobile))  
-{  
-if(alphanumeric(uadd))  
-{   
-if(countryselect(ucity))  
-{  
- if(ValidateEmail(uemail))  
-{  
- if(validgender(male,female))    
-{  
-}  
-}   
-}  
-}   
+var gardening= document.registration.gardening;  
+var playingcricket = document.registration.playingcricket;
+var music = document.registration.music;  
+var reading = document.registration.reading;
+var cooking = document.registration.cooking;  
+return true;
 }
-}
-return false;  
- } 
-function allLetter(uname)  
+ 
+function username_validation()  
 {   
+var uname = document.registration.username;
 var letters = /^[A-Za-z]+$/;  
 if(uname.value.match(letters))  
-{  
+{   
 return true;  
 }  
 else  
 {  
-alert('Username must have alphabet characters only');  
+document.getElementById("usernameError").innerHTML = "You must enter a username";
+document.getElementById("usernameError").style.color = "red";
 uname.focus();  
 return false;  
 }  
 }  
-function numeric(umobile)  
+function mobilenumber_validation()  
 {   
+var umobile= document.registration.mobilenumber; 
 var letters = /^[0-9]+$/;  
 if(umobile.value.match(letters))  
 {  
+
 return true;  
 }  
 else  
 {  
 alert('mobile number is invalid');  
-uadd.focus();  
+umobile.focus();  
 return false;  
 }  
 }  
-function alphanumeric(uadd)  
+function dob_validation()  
 {   
-var letters = /^[0-9a-zA-Z]+$/;  
-if(uadd.value.match(letters))  
+var udob=document.registration.dob;
+  if(udob.value=="")  
 {  
-return true;  
+alert('dob is required');  
+udob.focus();  
+return false;  
 }  
 else  
 {  
-alert('User address must have alphanumeric characters only');  
+return true;
+}  
+}  
+function age_validation()  
+{   
+ var uage=document.registration.age; 
+  if(uage.value=="")  
+{  
+alert('age field is required');  
+uage.focus();  
+return false;  
+}  
+else  
+{  
+return true;
+}  
+}  
+function address_validation() 
+{   
+var uadd = document.registration.address;  
+if(uadd.value=="")  
+{  
+alert('address field is required');  
 uadd.focus();  
 return false;  
 }  
-}  
-function countryselect(ucity)  
+else  
 {  
+return true;  
+}  
+}  
+function city_validation()  
+{  
+var ucity = document.registration.city;
 if(ucity.value == "Default")  
 {  
 alert('Select your city from the list');  
-ucountry.focus();  
+ucity.focus();  
 return false;  
 }  
 else  
@@ -84,43 +106,62 @@ return true;
 }  
 }  
 
-function ValidateEmail(uemail)  
+function email_validation()
 {  
+var uemail = document.registration.email;    
 var mailformat =/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))+$/; 
 if(uemail.value.match(mailformat))  
 {  
-return true;  
-}  
+return true; 
+ }  
 else 
 {  
 alert("invalid email address");  
 uemail.focus();  
 return false;  
-}  
+} 
 }
 
-function validgender(male,female)  
-{  
-x=0;  
-  
-if(male.checked)   
-{  
-x++;  
-} if(female.checked)  
-{  
-x++;   
-}  
-if(x==0)  
-{  
-alert('Select Male/Female');  
-male.focus();  
-return false;  
-} else  
-{  
-alert('Form Succesfully Submitted');  
-window.location.reload()  
-return true;  
-}  
+function submitt()
+{
+if(document.registration.username.value=="")
+{
+document.getElementById("usernameError").innerHTML = "You must enter a username";
+document.getElementById("usernameError").style.color = "red";
 }
-
+if(document.registration.mobilenumber.value=="")
+{
+document.getElementById("mobilenumberError").innerHTML = "You must enter a mobilenumber";
+document.getElementById("mobilenumberError").style.color = "red";
+}
+if(document.registration.dob.value=="")
+{
+document.getElementById("dobError").innerHTML = "You must enter a date of birth";
+document.getElementById("dobError").style.color = "red";
+}
+if(document.registration.age.value=="")
+{
+document.getElementById("ageError").innerHTML = "You must enter an age";
+document.getElementById("ageError").style.color = "red";
+}
+if(document.registration.address.value=="")
+{
+document.getElementById("addressError").innerHTML = "You must enter an address";
+document.getElementById("addressError").style.color = "red";
+}
+if(document.registration.city.value=="")
+{
+document.getElementById("cityError").innerHTML = "You must enter a city";
+document.getElementById("cityError").style.color = "red";
+}
+if(document.registration.email.value=="")
+{
+document.getElementById("emailError").innerHTML = "You must enter an email";
+document.getElementById("emailError").style.color = "red";
+}
+else
+{
+alert('Form submitted successfully');
+}
+}
 

@@ -4,23 +4,23 @@
 <link rel='stylesheet' href='common.css' type='text/css' />  
 <script src="registration-form-validation.js"></script>  
 </head>  
-<body >  
+<body onload="formValidation();">  
 
 <div class="heading"><marquee>Registration Form</marquee></div>    
-<form name='registration' onSubmit="return formValidation();">  
+<form name='registration'>  
 <ul>   
 <li><label for="username">Name:</label></li>  
-<li><input type="text" name="username" size="50" /></li>  
+<li><input type="text" name="username" size="50" onblur="username_validation()" required/><span id="usernameError"></span></li> 
 <li><label for="mobilenumber">MobileNumber:</label></li>  
-<li><input type="text" name="mobilenumber" size="50" maxlength="10"/></li>  
+<li><input type="text" name="mobilenumber" size="50" maxlength="10" onblur="mobilenumber_validation()" required/><span id="mobilenumberError"></span></li>  
 <li><label for="dob">DOB:</label></li>  
-<li><input type="date" name="dob" size="50" /></li>
-<li><label for="dob">Age:</label></li>  
-<li><input type="text" name="age" size="50"  /></li>  
+<li><input type="date" name="dob" size="50" onblur="dob_validation()" required/><span id="dobError"></span></li>
+<li><label for="age">Age:</label></li>  
+<li><input type="text" name="age" size="50"  onblur="age_validation()" required/><span id="ageError"></span></li>  
 <li><label for="address">Address:</label></li>  
-<li><input type="text" name="address" size="50" /></li>  
+<li><input type="text" name="address" size="50" onblur="address_validation()" required/><span id="addressError"></span></li>  
 <li><label for="city">City:</label></li>  
-<li><select name="city">  
+<li><select name="city" onblur="city_validation()" required>  
 <option selected="city" value="Default">-select-</option>  
 <option value="erode">Erode</option>  
 <option value="cbe">Coimbatore</option> 
@@ -29,7 +29,7 @@
 <option value="ooty">Ooty</option>  
 </select></li>    
 <li><label for="email">Email:</label></li>  
-<li><input type="text" name="email" size="50" /></li>   
+<li><input type="text" name="email" size="50" onblur="email_validation()" required/><span id="emailError"></span></li>   
 <li><label>Hobbies:</label></li>  
 <li><input type="checkbox" name="gardening" value="gardening" checked/><span>Gardening</span></li>  
 <li><input type="checkbox" name="playingcricket" value="playingcricket" /><span>Playing Cricket</span></li>  
@@ -37,9 +37,9 @@
 <li><input type="checkbox" name="reading" value="reading" /><span>Reading</span></li>  
 <li><input type="checkbox" name="cookimg" value="cooking" /><span>Cooking</span></li>  
 <li><label>Gender:</label></li>  
-<li><input type="radio" name="gender" value="male" id="male" /><span>Male</span></li>  
+<li><input type="radio" name="gender" value="male" id="male" checked/><span>Male</span></li>  
 <li><input type="radio" name="gender" value="female" id="female"/><span>Female</span></li>   
- <li><input type="submit" name="submit" value="Submit" /></li>  
+ <li><input type="submit" name="submit" value="Submit"  onClick="submitt();"/></li>  
 </ul>  
 </form>  
 </body>  
