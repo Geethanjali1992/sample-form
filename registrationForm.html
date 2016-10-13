@@ -4,42 +4,43 @@
 <link rel='stylesheet' href='common.css' type='text/css' />  
 <script src="registration-form-validation.js"></script>  
 </head>  
-<body onload="formValidation();">  
+<body>  
 
 <div class="heading"><marquee>Registration Form</marquee></div>    
-<form name='registration'>  
+<form name='registration' action="test.html" onsubmit="return formValidation()"  method="post">  
 <ul>   
 <li><label for="username">Name:</label></li>  
-<li><input type="text" name="username" size="50" onblur="username_validation()" required/><span id="usernameError"></span></li> 
+<li><input type="text" name="username" id="username" size="50" onblur="username_validation(name)" /><span id="usernameError" style="display: none;color:#8B0000">&nbsp invalid username</span></li> 
 <li><label for="mobilenumber">MobileNumber:</label></li>  
-<li><input type="text" name="mobilenumber" size="50" maxlength="10" onblur="mobilenumber_validation()" required/><span id="mobilenumberError"></span></li>  
+<li><input type="text" name="mobilenumber" id="mobilenumber" size="50" maxlength="10" onblur="mobilenumber_validation(name)"/><span id="mobilenumberError" style="display:none;color:#8B0000">&nbsp Mobile number is invalid</span></li>  
 <li><label for="dob">DOB:</label></li>  
-<li><input type="date" name="dob" size="50" onblur="dob_validation()" required/><span id="dobError"></span></li>
+<li><input type="date" name="dob" id="dob"  size="50" onblur="dob_validation(name)" /><span id="dobError" style="display:none;color:#8B0000">&nbsp dob is invalid</span></li>
 <li><label for="age">Age:</label></li>  
-<li><input type="text" name="age" size="50"  onblur="age_validation()" required/><span id="ageError"></span></li>  
+<li><input type="text" name="age" id="age" size="50"  onblur="age_validation(name)" /><span id="ageError" style="display:none;color:#8B0000">&nbsp age is invalid</span></li>  
 <li><label for="address">Address:</label></li>  
-<li><input type="text" name="address" size="50" onblur="address_validation()" required/><span id="addressError"></span></li>  
+<li><input type="text" id="address" name="address" i size="50" onblur="address_validation(name)" /><span id="addressError" style="display:none;color:#8B0000">&nbsp address is invalid</span></li>  
 <li><label for="city">City:</label></li>  
-<li><select name="city" onblur="city_validation()" required>  
-<option selected="city" value="Default">-select-</option>  
+<li><select name="city" id="city" onblur="city_validation(name)"> 
+<option selected="city" value="">-select-</option>    
 <option value="erode">Erode</option>  
 <option value="cbe">Coimbatore</option> 
 <option value="gobi">Gobi</option>   
 <option value="chennai">Chennai</option>  
 <option value="ooty">Ooty</option>  
-</select></li>    
+</select><span  id="cityError" style="display: none;color:#8B0000">&nbsp You must select your city</span></li>    
 <li><label for="email">Email:</label></li>  
-<li><input type="text" name="email" size="50" onblur="email_validation()" required/><span id="emailError"></span></li>   
+<li><input type="text" name="email" id="email" size="50" onblur="email_validation(name)" /><span id="emailError" style="display: none;color:#8B0000">&nbsp invalid email address</span></li>   
 <li><label>Hobbies:</label></li>  
-<li><input type="checkbox" name="gardening" value="gardening" checked/><span>Gardening</span></li>  
-<li><input type="checkbox" name="playingcricket" value="playingcricket" /><span>Playing Cricket</span></li>  
-<li><input type="checkbox" name="music" value="music" /><span>Music</span></li>  
-<li><input type="checkbox" name="reading" value="reading" /><span>Reading</span></li>  
-<li><input type="checkbox" name="cookimg" value="cooking" /><span>Cooking</span></li>  
+<li><input type="checkbox" name="gardening" id="gardening" value="gardening" onblur="hobbiesvalidation()"/><span>Gardening</span></li>  
+<li><input type="checkbox" name="playingcricket" id="playingcricket" value="playingcricket" onblur="hobbiesvalidation()"/><span>Playing Cricket</span></li>  
+<li><input type="checkbox" name="music" id="music" value="music" onblur="hobbiesvalidation()"/><span>Music</span></li>  
+<li><input type="checkbox" name="reading" id="reading" value="reading" onblur="hobbiesvalidation()"/><span>Reading</span></li>  
+<li><input type="checkbox" name="cookimg" id="cooking" value="cooking" onblur="hobbiesvalidation()"/><span>Cooking</span><span id="hobbiesError" style="display: none;color:#8B0000">&nbsp Select Hobbies</span></li>  
 <li><label>Gender:</label></li>  
-<li><input type="radio" name="gender" value="male" id="male" checked/><span>Male</span></li>  
-<li><input type="radio" name="gender" value="female" id="female"/><span>Female</span></li>   
- <li><input type="submit" name="submit" value="Submit"  onClick="submitt();"/></li>  
+<li><input type="radio" name="gender" value="male" id="male" onblur="validate_gender(name)" /><span>Male</span></li>  
+<li><input type="radio" name="gender" value="female" id="female" onblur="validate_gender(name)"/><span>Female</span>   <span id="genderError" style="display: none;color:#8B0000">&nbsp Select male/female</span></li>   
+ <li><input type="submit" id="submit" name="submit" value="Submit" />
+</li>  
 </ul>  
 </form>  
 </body>  
